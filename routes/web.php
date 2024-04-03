@@ -12,7 +12,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('/user')->group(function(){
+    Route::get('/home', function () {
+        $cats = DB::table('categories')->get();
+        return view('user.home',compact('cats'));
+    });
+    Route::get('/product',function(){
+        $products = DB::table('products')->get();
+        return view('user.home' , compact('products'));
+    });
 });
+
