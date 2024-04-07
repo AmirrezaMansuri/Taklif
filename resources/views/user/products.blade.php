@@ -15,7 +15,7 @@
             <div class="card text-white bg-primary">
                 <div class="card-body">
                     <h4 class="card-title">{{$product->name}}</h4>
-                    <button class="btn btn-info btn-block"><a href="/products/{{$product->id}}" class="text-white">Show Product</a></button>
+                    <button class="btn btn-info btn-block"><a href="/product/{{$product->id}}" class="text-white">Show Product</a></button>
                 </div>
             </div>
         </div>

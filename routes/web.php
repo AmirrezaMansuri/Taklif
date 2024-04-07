@@ -27,8 +27,33 @@ Route::get('/categories', function () {
     $categories = DB::table('categories')->get();
     return view('user.categories', compact('categories' , 'cats'));
 });
-Route::get('/products/{cat_id}',function($cat_id){
+Route::get('/product/{cat_id}',function($cat_id){
     $cats = DB::table('categories')->get();
-    $products = DB::table('products')->where('category_id' , $cat_id)->get();
-    return view('user.products', compact('products','cats'));
+    $product = DB::table('products')->where('category_id' , $cat_id)->first();
+    return view('user.product', compact('product','cats'));
+});
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.home');
+    });
+    Route::prefix('product')->group(function (){
+        Route::get('/', function () {
+            $products = DB::table('products')->get();
+            return view('admin.home');
+        });
+        Route::get('/insert', function () {});
+        Route::post('/insert', function () {});
+        Route::get('/update', function () {});
+        Route::post('/update', function () {});
+        Route::post('/delete', function () {});
+    });
+    Route::prefix('categories')->group(function (){
+        Route::get('/', function () {});
+        Route::get('/insert', function () {});
+        Route::post('/insert', function () {});
+        Route::get('/update', function () {});
+        Route::post('/update', function () {});
+        Route::get('/delete', function () {});
+    });
 });
