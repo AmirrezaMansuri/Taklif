@@ -9,7 +9,7 @@
   <ul class="navbar-nav ml-auto nav-fill">
    
    <li class="nav-item px-4 active">
-    <a href="#" class="nav-link"><h5>Home</h5></a>
+    <a href="/home" class="nav-link"><h5>Home</h5></a>
    </li>
    
    <li class="nav-item px-4 dropdown ">
@@ -19,14 +19,14 @@
       <div>
        <div class="dropdown-header" style="text-align:center">Categories</div>
        @foreach($cats as $cat)
-       <a class="dropdown-item" href="user/products/" style="text-align:center"><h6>{{$cat->name}}</h6></a>
+       <a class="dropdown-item" href="/products/{{$cat->id}}" style="text-align:center"><h6>{{$cat->name}}</h6></a>
        @endforeach
       </div>
      </div>
     </div>
    </li>
    <li class="nav-item px-4">
-    <a href="#" class="nav-link">Products</a>
+    <a href="/products" class="nav-link">Products</a>
    </li>
   </ul>
  </div>
