@@ -13,9 +13,9 @@
 @endsection
 @section('body')
 <div class="container">
-    <a href="admin/product/create">
-<button class="btn btn-primary btn-block">Add Product</button>
-</a>
+    <a href="/admin/category/create">
+<button class="btn btn-primary btn-block">Add Ctegories</button>
+    </a>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -30,7 +30,7 @@
     <tr>
       <td><h4>{{$category->id}}</h4></td>
       <td><h4>{{$category->name}}</h4></td>
-      <td><a href="/admin/update"><button class="btn btn-info">Edite</button></a></td>
+      <td><a href="/admin/category/update"><button class="btn btn-info">Edite</button></a></td>
       <td><a href="/admin/"><button class="btn btn-danger">DELETE</button></a></td>
     </tr>
     @endforeach

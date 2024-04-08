@@ -13,7 +13,7 @@
 @endsection
 @section('body')
 <div class="container">
-    <a href="admin/product/create">
+    <a href="/admin/product/create">
 <button class="btn btn-primary btn-block">Add Product</button>
 </a>
 <table class="table table-striped">

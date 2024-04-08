@@ -15,7 +15,7 @@
             <div class="card text-white bg-primary">
                 <div class="card-body">
                     <h4 class="card-title">Manage Products</h4>
-                    <button class="btn btn-info btn-block"><a href="/admin/products/" class="text-white">Show Table</a></button>
+                    <button class="btn btn-info btn-block"><a href="/admin/product/" class="text-white">Show Table</a></button>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="card text-white bg-primary">
                 <div class="card-body">
                     <h4 class="card-title">Manage categories</h4>
-                    <button class="btn btn-info btn-block"><a href="/admin/categories/" class="text-white">Show Table</a></button>
+                    <button class="btn btn-info btn-block"><a href="/admin/category/" class="text-white">Show Table</a></button>
                 </div>
             </div>
         </div>

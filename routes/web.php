@@ -35,29 +35,56 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.home');
     });
-    Route::prefix('products')->group(function (){
+    Route::prefix('product')->group(function (){
         Route::get('/', function () {
             $products = DB::table('products')->get();
             return view('admin.product.view',compact('products'));
         });
-        Route::get('/create', function () {});
-        Route::post('/create', function () {});
+        Route::get('/create', function () {
+            $categories= DB::table('categories')->get();
+            return view('admin.product.create',compact('categories'));
+        });
+        Route::post('/create', function () {
+            DB::table('products')->insert([
+                'name'=> request('name'),
+                'price'=> request('price'),
+                'off'=> request('off'),
+                'description'=> request('description'),
+                'category_id'=> request('category_id'),
+            ]);
+            $products = DB::table('products')->get();
+            return view('admin.product.view',compact('products'));
+        });
         Route::get('/update', function () {});
         Route::post('/update', function () {});
         Route::post('/delete', function () {});
     });
-    Route::prefix('categories')->group(function (){
+
+    //__________________________________________________________________
+
+    Route::prefix('category')->group(function (){
         Route::get('/', function () {
             $categories = DB::table('categories')->get();
             return view('admin.category.view' , compact('categories'));
         });
-        Route::get('/create', function () {});
-        Route::post('/create', function () {});
+        Route::get('/create', function () {
+            return view('admin.category.create');
+        });
+        Route::post('/create', function () {
+            DB::table('categories')->insert([
+                'name'=> request('name'),
+            ]);
+            $categories = DB::table('categories')->get();
+            return view('admin.category.view', compact('categories'));
+        });
         Route::get('/update', function () {});
         Route::post('/update', function () {});
         Route::get('/delete', function () {});
     });
-    Route::prefix('users')->group(function (){
+
+    //__________________________________________________________________
+   
+    Route::prefix('user')->group(function (){
         Route::get('/', function () {
             $categories = DB::table('categories')->get();
             return('admin.user.view');
