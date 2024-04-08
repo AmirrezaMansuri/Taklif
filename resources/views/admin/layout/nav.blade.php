@@ -11,9 +11,8 @@
    <li class="nav-item px-4 active">
     <a href="/home" class="nav-link"><h5>Home</h5></a>
    </li>
-   
-   <li class="nav-item px-4 dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+   <li class="nav-item">
+    <a class="nav-link" href="/admin/categories" aria-haspopup="true">Categories</a>
    </li>
    <li class="nav-item px-4">
     <a href="/admin/products" class="nav-link">Products</a>
