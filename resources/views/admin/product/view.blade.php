@@ -30,7 +30,7 @@
     <tr>
       <td><h4>{{$product->id}}</h4></td>
       <td><h4>{{$product->name}}</h4></td>
-      <td><a href="/admin/product/update"><button class="btn btn-info">Edite</button></a></td>
+      <td><a href="/admin/product/update/{{$product->id}}"><button class="btn btn-info">Edite</button></a></td>
       <td><a href="/admin/"><button class="btn btn-danger">DELETE</button></a></td>
     </tr>
     @endforeach

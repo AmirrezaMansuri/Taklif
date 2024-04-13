@@ -30,7 +30,7 @@
     <tr>
       <td><h4>{{$category->id}}</h4></td>
       <td><h4>{{$category->name}}</h4></td>
-      <td><a href="/admin/category/update"><button class="btn btn-info">Edite</button></a></td>
+      <td><a href="/admin/category/update/{{$category->id}}"><button class="btn btn-info">Edite</button></a></td>
       <td><a href="/admin/"><button class="btn btn-danger">DELETE</button></a></td>
     </tr>
     @endforeach

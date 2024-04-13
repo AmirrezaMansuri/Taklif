@@ -55,7 +55,11 @@ Route::prefix('admin')->group(function () {
             $products = DB::table('products')->get();
             return view('admin.product.view',compact('products'));
         });
-        Route::get('/update', function () {});
+        Route::get('/update/{id}', function ($id) {
+            $product = DB::table('products')->where('id',$id)->first();
+            $categories= DB::table('categories')->get();
+            return view('admin.product.update',compact('product','categories'));
+        });
         Route::post('/update', function () {});
         Route::post('/delete', function () {});
     });
@@ -77,7 +81,10 @@ Route::prefix('admin')->group(function () {
             $categories = DB::table('categories')->get();
             return view('admin.category.view', compact('categories'));
         });
-        Route::get('/update', function () {});
+        Route::get('/update/{id}', function ($id) {
+            $category = DB::table('categories')->where('id',$id)->first();
+            return view('admin.category.update', compact('category'));
+        });
         Route::post('/update', function () {});
         Route::get('/delete', function () {});
     });
