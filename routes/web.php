@@ -53,7 +53,7 @@ Route::prefix('admin')->group(function () {
                 'category_id'=> request('category_id'),
             ]);
             $products = DB::table('products')->get();
-            return view('admin.product.view',compact('products'));
+            return redirect('/admin/product/');
         });
         Route::get('/update/{id}', function ($id) {
             $product = DB::table('products')->where('id',$id)->first();
@@ -79,7 +79,7 @@ Route::prefix('admin')->group(function () {
                 'name'=> request('name'),
             ]);
             $categories = DB::table('categories')->get();
-            return view('admin.category.view', compact('categories'));
+            return redirect('/admin/category/');
         });
         Route::get('/update/{id}', function ($id) {
             $category = DB::table('categories')->where('id',$id)->first();
