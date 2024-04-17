@@ -39,17 +39,15 @@ Route::prefix('admin')->group(function () {
     Route::prefix('product')->group(function () {
         Route::get('/', function () {
             // $products = DB::table('products')->get();
-            $products=product::all();
+            $products = product::all();
             foreach ($products as $product) {
-                $cat= DB::table('categories')->where('id', $product->category_id)->first();
-                $product['cat_name']=$cat->name;
+                $cat = DB::table('categories')->where('id', $product->category_id)->first();
+                $product['cat_name'] = $cat->name;
             }
-            return $products;
-            $categories = DB::table('categories')->get();
-            return view('admin.product.view', compact('products', 'categories'));
+            return view('admin.product.view', compact('products'));
         });
         Route::get('/create', function () {
-            $categories = DB::table('categories')->get();
+            $categories = category::all();
             return view('admin.product.create', compact('categories'));
         });
         Route::post('/create', function () {
@@ -60,7 +58,6 @@ Route::prefix('admin')->group(function () {
                 'description' => request('description'),
                 'category_id' => request('category_id'),
             ]);
-            $products = DB::table('products')->get();
             return redirect('/admin/product/');
         });
         Route::get('/update/{id}', function ($id) {
