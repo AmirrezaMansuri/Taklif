@@ -9,7 +9,7 @@
   <ul class="navbar-nav ml-auto nav-fill">
    
    <li class="nav-item px-4 active">
-    <a href="/admin/home" class="nav-link"><h5>Home</h5></a>
+    <a href="/admin/" class="nav-link"><h5>Home</h5></a>
    </li>
    <li class="nav-item">
     <a class="nav-link" href="/admin/category" aria-haspopup="true">Categories</a>

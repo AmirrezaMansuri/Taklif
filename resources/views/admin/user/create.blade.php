@@ -25,12 +25,12 @@
         </div>
         <div class="form-group">
           <label for="email"><h6>Email:</h6></label>
-          <input type="text"
+          <input type="email"
             class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="">
         </div>
         <div class="form-group">
           <label for="pass"><h6>Password:</h6></label>
-          <input type="text"
+          <input type="password"
             class="form-control" name="password" id="pass" aria-describedby="helpId" placeholder="">
         </div>
         <button type="submit" class="btn btn-primary btn-block">Create</button>

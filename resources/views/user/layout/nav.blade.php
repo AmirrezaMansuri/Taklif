@@ -25,9 +25,6 @@
      </div>
     </div>
    </li>
-   <li class="nav-item px-4">
-    <a href="/products" class="nav-link">Products</a>
-   </li>
   </ul>
  </div>
 </div>

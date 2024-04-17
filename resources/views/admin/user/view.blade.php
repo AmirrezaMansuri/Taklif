@@ -32,7 +32,7 @@
       <td><h4>{{$user->id}}</h4></td>
       <td><h4>{{$user->name}}</h4></td>
       <td><a href="/admin/user/update/{{$user->id}}"><button class="btn btn-info">Edite</button></a></td>
-      <td><a href="/admin/user/delete"><button class="btn btn-danger">DELETE</button></a></td>
+      <td><a href="/admin/user/delete/{{$user->id}}"><button class="btn btn-danger">DELETE</button></a></td>
       <td><a href="/admin/user"><button class="btn" type="submit">Active</button></a></td>
     </tr>
     @endforeach

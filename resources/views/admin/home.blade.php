@@ -35,7 +35,17 @@
             <div class="card text-white bg-primary">
                 <div class="card-body">
                     <h4 class="card-title">Manage users</h4>
-                    <button class="btn btn-info btn-block"><a href="/admin/users/" class="text-white">Show Table</a></button>
+                    <button class="btn btn-info btn-block"><a href="/admin/user/" class="text-white">Show Table</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6 col-admin">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h4 class="card-title">Back To Site</h4>
+                    <button class="btn btn-warning btn-block"><a href="/" class="text-white">Back</a></button>
                 </div>
             </div>
         </div>
