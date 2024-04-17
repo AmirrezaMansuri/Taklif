@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,7 +38,13 @@ Route::prefix('admin')->group(function () {
     });
     Route::prefix('product')->group(function () {
         Route::get('/', function () {
-            $products = DB::table('products')->get();
+            // $products = DB::table('products')->get();
+            $products=product::all();
+            foreach ($products as $product) {
+                $cat= DB::table('categories')->where('id', $product->category_id)->first();
+                $product['cat_name']=$cat->name;
+            }
+            return $products;
             $categories = DB::table('categories')->get();
             return view('admin.product.view', compact('products', 'categories'));
         });

@@ -38,7 +38,7 @@
                         </td>
                         <td>
                             <h4>
-
+{{$product->cat_name}}
                             </h4>
                         </td>
                         <td><a href="/admin/product/update/{{ $product->id }}"><button
