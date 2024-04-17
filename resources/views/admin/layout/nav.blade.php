@@ -17,6 +17,9 @@
    <li class="nav-item px-4">
     <a href="/admin/product" class="nav-link">Products</a>
    </li>
+   <li class="nav-item px-4">
+    <a href="/admin/user" class="nav-link">Users</a>
+   </li>
   </ul>
  </div>
 </div>

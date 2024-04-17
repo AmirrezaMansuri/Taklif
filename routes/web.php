@@ -93,11 +93,20 @@ Route::prefix('admin')->group(function () {
    
     Route::prefix('user')->group(function (){
         Route::get('/', function () {
-            $categories = DB::table('categories')->get();
-            return('admin.user.view');
+            $users = DB::table('users')->get();
+            return view('admin.user.view', compact('users'));
         });
-        Route::get('/create', function () {});
-        Route::post('/create', function () {});
+        Route::get('/create', function () {
+            return view('admin.user.create');
+        });
+        Route::post('/create', function () {
+            DB::table('users')->insert([
+                'name'=> request('name'),
+                'email' => request('email'),
+                'password' => request('password'),
+            ]);
+            return redirect('/admin/user/');
+        });
         Route::get('/update', function () {});
         Route::post('/update', function () {});
         Route::get('/delete', function () {});
