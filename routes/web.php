@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $cats = DB::table('categories')->get();
-    return view('user.home', compact('cats'));
+    $categories = category::all();
+    return view('user.home', compact('categories'));
 });
 
 Route::get('/products/{cat_id}', function ($cat_id) {
