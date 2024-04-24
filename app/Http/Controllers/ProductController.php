@@ -36,14 +36,14 @@ class ProductController extends Controller
         $categories = category::all();
         return view('admin.product.create', compact('categories'));
     }
-    public function create_product()
+    public function create_product(Request $req)
     {
         DB::table('products')->insert([
-            'name' => request('name'),
-            'price' => request('price'),
-            'off' => request('off'),
-            'description' => request('description'),
-            'category_id' => request('category_id'),
+            'name' => $req->name,
+            'price' => $req->price,
+            'off' => $req->off,
+            'description' => $req->description,
+            'category_id' => $req->category_id,
         ]);
         return redirect('/admin/product/');
     }
