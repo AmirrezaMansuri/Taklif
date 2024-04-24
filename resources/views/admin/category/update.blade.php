@@ -14,7 +14,7 @@
 @endsection
 @section('body')
 <div class="container">
-    <form action="/admin/category/create" method="post">
+    <form action="/admin/category/update/{{$category->id}}" method="post">
         @csrf
         <div class="form-group">
           <label for="category"><h6>Category Name:</h6></label>

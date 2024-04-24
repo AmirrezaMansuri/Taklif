@@ -15,7 +15,7 @@
 @endsection
 @section('body')
 <div class="container">
-    <form action="/admin/product/create" method="post">
+    <form action="/admin/product/update/{{$product->id}}" method="post">
         @csrf
         <div class="form-group">
             <label for="Product">
@@ -52,7 +52,7 @@
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Create</button>
+        <button type="submit" class="btn btn-primary btn-block">Save</button>
     </form>
 </div>
 @endsection

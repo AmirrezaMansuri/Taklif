@@ -38,27 +38,36 @@ class ProductController extends Controller
     }
     public function create_product(Request $req)
     {
-        DB::table('products')->insert([
-            'name' => $req->name,
-            'price' => $req->price,
-            'off' => $req->off,
-            'description' => $req->description,
-            'category_id' => $req->category_id,
-        ]);
+        $insert = new product();
+        $insert->name=$req->name;
+        $insert->price=$req->price;
+        $insert->off=$req->off;
+        $insert->description=$req->description;
+        $insert->category_id=$req->category_id;
+        $insert->save();
         return redirect('/admin/product/');
     }
     public function show_update($id)
     {
-        $product = DB::table('products')->where('id', $id)->first();
+        $product = product::where('id', $id)->first();
         $categories = DB::table('categories')->get();
         return view('admin.product.update', compact('product', 'categories'));
     }
-    public function update_product()
+    public function update_product(Request $req , $id)
     {
+        $update = product::find($id);
+        $update->name=$req->name;
+        $update->price=$req->price;
+        $update->off=$req->off;
+        $update->description=$req->description;
+        $update->category_id=$req->category_id;
+        $update->save();
+        return redirect('/admin/product/');
     }
     public function destory($id)
     {
-        DB::table('products')->where('id', $id)->delete();
+        $delete=product::where('id', $id)->first();
+        $delete->delete();
         return redirect('/admin/product/');
     }
 }

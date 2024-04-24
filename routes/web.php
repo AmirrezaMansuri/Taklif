@@ -35,7 +35,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/create', [ProductController::class, 'show_create']);
         Route::post('/create', [ProductController::class, 'create_product']);
         Route::get('/update/{id}', [ProductController::class, 'show_update']);
-        Route::post('/update', [ProductController::class, 'update_product']);
+        Route::post('/update/{id}', [ProductController::class, 'update_product']);
         Route::get('/delete/{id}', [ProductController::class, 'destory']);
     });
 
@@ -46,7 +46,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/create', [CategoryController::class, 'show_create']);
         Route::post('/create', [CategoryController::class, 'create_category']);
         Route::get('/update/{id}', [CategoryController::class, 'show_update']);
-        Route::post('/update', [CategoryController::class, 'update_category']);
+        Route::post('/update/{id}', [CategoryController::class, 'update_category']);
         Route::get('/delete/{id}', [CategoryController::class, 'destory']);
     });
 
