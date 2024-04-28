@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use DB;
 use Illuminate\Http\Request;
+use Validator;
 
 class ProductController extends Controller
 {
@@ -38,12 +39,25 @@ class ProductController extends Controller
     }
     public function create_product(Request $req)
     {
+        $data = $req->all();
+        $rule = [
+            'name' => 'required',
+            'price' => 'numeric',
+            'off' => 'numeric',
+            'description' => 'nullable',
+            'category_id' => 'required|numeric',
+        ];
+        $errors = Validator::make($data, $rule);
+
+        if ($errors->fails()) {
+            return redirect()->back()->withErrors($errors)->withInput();
+        }
         $insert = new product();
-        $insert->name=$req->name;
-        $insert->price=$req->price;
-        $insert->off=$req->off;
-        $insert->description=$req->description;
-        $insert->category_id=$req->category_id;
+        $insert->name = $req->name;
+        $insert->price = $req->price;
+        $insert->off = $req->off;
+        $insert->description = $req->description;
+        $insert->category_id = $req->category_id;
         $insert->save();
         return redirect('/admin/product/');
     }
@@ -53,20 +67,33 @@ class ProductController extends Controller
         $categories = DB::table('categories')->get();
         return view('admin.product.update', compact('product', 'categories'));
     }
-    public function update_product(Request $req , $id)
+    public function update_product(Request $req, $id)
     {
+        $data = $req->all();
+        $rule = [
+            'name' => 'required',
+            'price' => 'numeric',
+            'off' => 'numeric',
+            'description' => 'nullable',
+            'category_id' => 'required|numeric',
+        ];
+        $errors = Validator::make($data, $rule);
+
+        if ($errors->fails()) {
+            return redirect()->back()->withErrors($errors)->withInput();
+        }
         $update = product::find($id);
-        $update->name=$req->name;
-        $update->price=$req->price;
-        $update->off=$req->off;
-        $update->description=$req->description;
-        $update->category_id=$req->category_id;
+        $update->name = $req->name;
+        $update->price = $req->price;
+        $update->off = $req->off;
+        $update->description = $req->description;
+        $update->category_id = $req->category_id;
         $update->save();
         return redirect('/admin/product/');
     }
     public function destory($id)
     {
-        $delete=product::where('id', $id)->first();
+        $delete = product::where('id', $id)->first();
         $delete->delete();
         return redirect('/admin/product/');
     }

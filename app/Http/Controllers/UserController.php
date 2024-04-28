@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Product;
 use DB;
 use Illuminate\Http\Request;
+use Validator;
+
 class UserController extends Controller
 {
     public function table()
@@ -18,13 +20,24 @@ class UserController extends Controller
     {
         return view('admin.user.create');
     }
-    public function create_user()
+    public function create_user(Request $req)
     {
-        DB::table('users')->insert([
-            'name' => request('name'),
-            'email' => request('email'),
-            'password' => request('password'),
-        ]);
+        $data = $req->all();
+        $rule = [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+
+        ];
+        $errors = validator::make($data, $rule);
+        if ($errors->fails()) {
+            return redirect()->back()->withErrors($errors)->withinput();
+        }
+        $insert = new User();
+        $insert->name = $req->name;
+        $insert->email = $req->email;
+        $insert->password = $req->password;
+        $insert->save();
         return redirect('/admin/user/');
     }
 
@@ -33,12 +46,25 @@ class UserController extends Controller
         $user = DB::table('users')->where('id', $id)->first();
         return view('admin.user.update', compact('user'));
     }
-    public function update_user()
+    public function update_user($req, $id)
     {
+        $data = $req->all();
+        $rule = [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+
+        ];
+        $errors = validator::make($data, $rule);
+        if ($errors->fails()) {
+            return redirect()->back()->withErrors($errors)->withinput();
+        }
+
     }
     public function destroy($id)
     {
-        DB::table('users')->where('id', $id)->delete();
+        $user = User::where('id', $id);
+        $user->delete();
         return redirect('/admin/user');
     }
 }
