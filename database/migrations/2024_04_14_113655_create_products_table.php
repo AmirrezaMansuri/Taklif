@@ -18,7 +18,7 @@ return new class extends Migration
             $table->tinyInteger('off');
             $table->string('description');
             $table->string('image')->nullable();
-            $table->integer('category_id');
+            $table->bigInteger('category_id');
             $table->timestamps();
         });
     }

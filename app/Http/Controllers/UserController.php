@@ -46,7 +46,7 @@ class UserController extends Controller
         $user = User::find( $id );
         return view('admin.user.update', compact('user'));
     }
-    public function update_user($req, $id)
+    public function update_user(Request $req, $id)
     {
         $data = $req->all();
         $rule = [
@@ -64,6 +64,7 @@ class UserController extends Controller
         $update->email = $req->email;
         $update->password = $req->password;
         $update->save();
+        return redirect('/admin/user');
     }
     public function destroy($id)
     {

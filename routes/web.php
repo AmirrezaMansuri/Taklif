@@ -57,7 +57,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/create', [UserController::class,'show_create']);
         Route::post('/create', [UserController::class,'create_user']);
         Route::get('/update/{id}', [UserController::class,'show_update']);
-        Route::post('/update', [UserController::class,'update_user']);
+        Route::post('/update/{id}', [UserController::class,'update_user']);
         Route::get('/delete/{id}', [UserController::class,'destroy']);
     });
 });

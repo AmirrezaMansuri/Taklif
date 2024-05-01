@@ -15,7 +15,7 @@
 @endsection
 @section('body')
 <div class="container">
-    <form action="/admin/user/create" method="post">
+    <form action="/admin/user/update/{{$user->id}}" method="post">
         @csrf
         <div class="form-group">
             <label for="user_name">
