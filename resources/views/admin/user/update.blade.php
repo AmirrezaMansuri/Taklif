@@ -36,7 +36,7 @@
         <div class="form-group">
           <label for="newpass"><h6>New Password:</h6></label>
           <input type="password"
-            class="form-control" name="password" id="newpass" aria-describedby="helpId" placeholder="">
+            class="form-control" name="newpassword" id="newpass" aria-describedby="helpId" placeholder="">
         </div>
         <button type="submit" class="btn btn-primary btn-block">Create</button>
     </form>

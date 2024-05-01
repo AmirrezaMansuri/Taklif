@@ -43,7 +43,7 @@ class UserController extends Controller
 
     public function show_update($id)
     {
-        $user = DB::table('users')->where('id', $id)->first();
+        $user = User::find( $id );
         return view('admin.user.update', compact('user'));
     }
     public function update_user($req, $id)
@@ -53,13 +53,17 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-
+            'newpassword' =>'nullable',
         ];
         $errors = validator::make($data, $rule);
         if ($errors->fails()) {
             return redirect()->back()->withErrors($errors)->withinput();
         }
-
+        $update = User::find($id);
+        $update->name = $req->name;
+        $update->email = $req->email;
+        $update->password = $req->password;
+        $update->save();
     }
     public function destroy($id)
     {
