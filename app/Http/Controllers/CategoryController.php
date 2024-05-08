@@ -44,7 +44,7 @@ class CategoryController extends Controller
     }
     public function show_update($id)
     {
-        
+
         $category = category::where('id', $id)->first();
         return view('admin.category.update', compact('category'));
     }

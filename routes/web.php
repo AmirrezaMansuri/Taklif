@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
@@ -60,4 +60,12 @@ Route::prefix('admin')->group(function () {
         Route::post('/update/{id}', [UserController::class,'update_user']);
         Route::get('/delete/{id}', [UserController::class,'destroy']);
     });
+});
+
+Route::prefix('auth')->group(function () {
+    Route::get('/register', [AuthController::class,'show_register']);
+    Route::post('/register', [AuthController::class,'register']);
+    Route::get('/login', [AuthController::class,'show_login']);
+    Route::post('/login', [AuthController::class,'login']);
+    Route::get('/logout', [AuthController::class,'logout']);
 });
