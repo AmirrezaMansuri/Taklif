@@ -42,6 +42,7 @@ class AuthController extends Controller
     {
         $user = User::where('name', $req->name)->first();
         if (Hash::check($req->password, $user->password)) {
+            Auth::login($user);
             return redirect('/');
         }
         return redirect()->back();

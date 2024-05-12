@@ -54,6 +54,9 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Create</button>
+            <a href="/auth/login">
+                <h5>Go to Login</h5>
+            </a>
         </form>
     </div>
 @endsection

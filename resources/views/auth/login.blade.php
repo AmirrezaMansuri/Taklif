@@ -37,6 +37,10 @@
                     placeholder="">
             </div>
             <button type="submit" class="btn btn-primary btn-block">Create</button>
+            <a href="/auth/register">
+                <h5>Go to register</h5>
+            </a>
+
         </form>
     </div>
 @endsection

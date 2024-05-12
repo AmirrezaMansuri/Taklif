@@ -20,52 +20,55 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [CategoryController::class, 'list']);
-Route::get('/products/{cat_id}', [ProductController::class, 'products']);
-Route::get('/product/{id}', [ProductController::class, 'product']);
 
-//__________________________________________________________________
-
-Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.home');
-    });
-    Route::prefix('product')->group(function () {
-        Route::get('/', [ProductController::class, 'table']);
-        Route::get('/create', [ProductController::class, 'show_create']);
-        Route::post('/create', [ProductController::class, 'create_product']);
-        Route::get('/update/{id}', [ProductController::class, 'show_update']);
-        Route::post('/update/{id}', [ProductController::class, 'update_product']);
-        Route::get('/delete/{id}', [ProductController::class, 'destory']);
-    });
+Route::middleware('auth')->group(function(){
+    Route::get('/', [CategoryController::class, 'list']);
+    Route::get('/products/{cat_id}', [ProductController::class, 'products']);
+    Route::get('/product/{id}', [ProductController::class, 'product']);
 
     //__________________________________________________________________
+    Route::prefix('admin')->group(function () {
+        Route::get('/', function () {
+            return view('admin.home');
+        });
+        Route::prefix('product')->group(function () {
+            Route::get('/', [ProductController::class, 'table']);
+            Route::get('/create', [ProductController::class, 'show_create']);
+            Route::post('/create', [ProductController::class, 'create_product']);
+            Route::get('/update/{id}', [ProductController::class, 'show_update']);
+            Route::post('/update/{id}', [ProductController::class, 'update_product']);
+            Route::get('/delete/{id}', [ProductController::class, 'destory']);
+        });
 
-    Route::prefix('category')->group(function () {
-        Route::get('/', [CategoryController::class, 'table']);
-        Route::get('/create', [CategoryController::class, 'show_create']);
-        Route::post('/create', [CategoryController::class, 'create_category']);
-        Route::get('/update/{id}', [CategoryController::class, 'show_update']);
-        Route::post('/update/{id}', [CategoryController::class, 'update_category']);
-        Route::get('/delete/{id}', [CategoryController::class, 'destory']);
-    });
+        //__________________________________________________________________
 
-    //__________________________________________________________________
+        Route::prefix('category')->group(function () {
+            Route::get('/', [CategoryController::class, 'table']);
+            Route::get('/create', [CategoryController::class, 'show_create']);
+            Route::post('/create', [CategoryController::class, 'create_category']);
+            Route::get('/update/{id}', [CategoryController::class, 'show_update']);
+            Route::post('/update/{id}', [CategoryController::class, 'update_category']);
+            Route::get('/delete/{id}', [CategoryController::class, 'destory']);
+        });
 
-    Route::prefix('user')->group(function () {
-        Route::get('/', [UserController::class, 'table']);
-        Route::get('/create', [UserController::class,'show_create']);
-        Route::post('/create', [UserController::class,'create_user']);
-        Route::get('/update/{id}', [UserController::class,'show_update']);
-        Route::post('/update/{id}', [UserController::class,'update_user']);
-        Route::get('/delete/{id}', [UserController::class,'destroy']);
+        //__________________________________________________________________
+
+        Route::prefix('user')->group(function () {
+            Route::get('/', [UserController::class, 'table']);
+            Route::get('/create', [UserController::class,'show_create']);
+            Route::post('/create', [UserController::class,'create_user']);
+            Route::get('/update/{id}', [UserController::class,'show_update']);
+            Route::post('/update/{id}', [UserController::class,'update_user']);
+            Route::get('/delete/{id}', [UserController::class,'destroy']);
+        });
     });
 });
+
 
 Route::prefix('auth')->group(function () {
     Route::get('/register', [AuthController::class,'show_register']);
     Route::post('/register', [AuthController::class,'register']);
-    Route::get('/login', [AuthController::class,'show_login']);
-    Route::post('/login', [AuthController::class,'login']);
+    Route::get('/login', [AuthController::class,'show_login'])->name('login');
+    Route::post('/login', [AuthController::class,'login'])->name('login-user');
     Route::get('/logout', [AuthController::class,'logout']);
 });

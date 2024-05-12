@@ -8,10 +8,12 @@ use App\Models\Product;
 use DB;
 use Illuminate\Http\Request;
 use Validator;
+use Auth;
 class CategoryController extends Controller
 {
     public function list()
     {
+        $user = Auth::user();
         $categories = category::all();
         return view('user.home', compact('categories'));
     }
