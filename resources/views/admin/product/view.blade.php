@@ -25,6 +25,7 @@
                 <th scope="col">Edite</th>
                 <th scope="col">Category</th>
                 <th scope="col">DELETE</th>
+                <th scope="col">Image</th>
             </tr>
         </thead>
         <tbody>
@@ -44,6 +45,9 @@
                     </h4>
                 </td>
                 <td><a href="/admin/product/delete/{{ $product->id }}"><button class="btn btn-danger">DELETE</button></a></td>
+                <td><a href="/admin/product/delete/{{ $product->id }}"><button class="btn btn-danger">DELETE</button></a></td>
+                <td><a href="/admin/product/image/{{$product->id}}"><button class="btn btn-light" type="submit">Images</button></a></td>
+
             </tr>
             @endforeach
         </tbody>

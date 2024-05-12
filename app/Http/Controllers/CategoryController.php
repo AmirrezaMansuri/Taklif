@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Image;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
@@ -9,6 +9,7 @@ use DB;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
+
 class CategoryController extends Controller
 {
     public function list()
@@ -66,12 +67,34 @@ class CategoryController extends Controller
         $update->save();
 
         return redirect('/admin/category/');
-
     }
     public function destory($id)
     {
         $category = Category::where('id', $id);
         $category->delete();
         return redirect('/admin/category/');
+    }
+    public function show_image($id)
+    {
+        $images = Image::where('subject_id', $id)->where('type', '3')->get();
+        return view('admin.category.image', compact('id', 'images'));
+    }
+
+    public function create_image(Request $req, $id)
+    {
+        $image = new Image();
+        $image->type = '3';
+        $image->subject_id = $id;
+
+        if ($req->hasFile('image')) {
+            $img = $req->file('image');
+            $image_name = time() . '.' . $img->getClientOriginalExtension();
+            $address = 'image/category/';
+            $img->move($address, $image_name);
+
+            $image->image = $address . $image_name;
+        }
+        $image->save();
+        return redirect()->back();
     }
 }

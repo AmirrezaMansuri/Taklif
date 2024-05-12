@@ -1,4 +1,4 @@
-@extends('admin.layout.master');
+@extends('admin.layout.master')
 @section('style')
  <style>
      .table{
@@ -23,6 +23,7 @@
       <th scope="col">Name</th>
       <th scope="col">Edite</th>
       <th scope="col">DELETE</th>
+      <th scope="col">Image</th>
     </tr>
   </thead>
   <tbody>
@@ -32,6 +33,7 @@
       <td><h4>{{$category->name}}</h4></td>
       <td><a href="/admin/category/update/{{$category->id}}"><button class="btn btn-info">Edite</button></a></td>
       <td><a href="/admin/category/delete/{{$category->id}}"><button class="btn btn-danger">DELETE</button></a></td>
+      <td><a href="/admin/category/image/{{$category->id}}"><button class="btn btn-light">Image</button></a></td>
     </tr>
     @endforeach
   </tbody>

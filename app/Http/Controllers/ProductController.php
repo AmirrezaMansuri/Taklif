@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\image;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
@@ -96,5 +96,28 @@ class ProductController extends Controller
         $delete = product::where('id', $id)->first();
         $delete->delete();
         return redirect('/admin/product/');
+    }
+    public function show_image($id)
+    {
+        $images = Image::where('subject_id', $id)->where('type', '2')->get();
+        return view('admin.product.image', compact('id', 'images'));
+    }
+
+    public function create_image(Request $req, $id)
+    {
+        $image = new Image();
+        $image->type = '2';
+        $image->subject_id = $id;
+
+        if ($req->hasFile('image')) {
+            $img = $req->file('image');
+            $image_name = time() . '.' . $img->getClientOriginalExtension();
+            $address = 'image/product/';
+            $img->move($address, $image_name);
+
+            $image->image = $address . $image_name;
+        }
+        $image->save();
+        return redirect()->back();
     }
 }

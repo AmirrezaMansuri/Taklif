@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::get('/', [CategoryController::class, 'list']);
     Route::get('/products/{cat_id}', [ProductController::class, 'products']);
     Route::get('/product/{id}', [ProductController::class, 'product']);
@@ -38,6 +39,8 @@ Route::middleware('auth')->group(function(){
             Route::get('/update/{id}', [ProductController::class, 'show_update']);
             Route::post('/update/{id}', [ProductController::class, 'update_product']);
             Route::get('/delete/{id}', [ProductController::class, 'destory']);
+            Route::get('/image/{id}', [ProductController::class, 'show_image']);
+            Route::post('/image/{id}', [ProductController::class, 'create_image']);
         });
 
         //__________________________________________________________________
@@ -49,26 +52,30 @@ Route::middleware('auth')->group(function(){
             Route::get('/update/{id}', [CategoryController::class, 'show_update']);
             Route::post('/update/{id}', [CategoryController::class, 'update_category']);
             Route::get('/delete/{id}', [CategoryController::class, 'destory']);
+            Route::get('/image/{id}', [CategoryController::class, 'show_image']);
+            Route::post('/image/{id}', [CategoryController::class, 'create_image']);
         });
 
         //__________________________________________________________________
 
         Route::prefix('user')->group(function () {
             Route::get('/', [UserController::class, 'table']);
-            Route::get('/create', [UserController::class,'show_create']);
-            Route::post('/create', [UserController::class,'create_user']);
-            Route::get('/update/{id}', [UserController::class,'show_update']);
-            Route::post('/update/{id}', [UserController::class,'update_user']);
-            Route::get('/delete/{id}', [UserController::class,'destroy']);
+            Route::get('/create', [UserController::class, 'show_create']);
+            Route::post('/create', [UserController::class, 'create_user']);
+            Route::get('/update/{id}', [UserController::class, 'show_update']);
+            Route::post('/update/{id}', [UserController::class, 'update_user']);
+            Route::get('/delete/{id}', [UserController::class, 'destroy']);
+            Route::get('/image/{id}', [UserController::class, 'show_image']);
+            Route::post('/image/{id}', [UserController::class, 'create_image']);
         });
     });
 });
 
 
 Route::prefix('auth')->group(function () {
-    Route::get('/register', [AuthController::class,'show_register']);
-    Route::post('/register', [AuthController::class,'register']);
-    Route::get('/login', [AuthController::class,'show_login'])->name('login');
-    Route::post('/login', [AuthController::class,'login'])->name('login-user');
-    Route::get('/logout', [AuthController::class,'logout']);
+    Route::get('/register', [AuthController::class, 'show_register']);
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::get('/login', [AuthController::class, 'show_login'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login-user');
+    Route::get('/logout', [AuthController::class, 'logout']);
 });
