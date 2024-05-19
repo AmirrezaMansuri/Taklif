@@ -4,7 +4,8 @@
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+        <h4 style="margin-right:14px;color:white">Welcome</h4>
+        
         <a href="#" class="navbar-brand">
             <h3>ShopBrand</h3>
         </a>

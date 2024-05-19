@@ -14,13 +14,14 @@ class CategoryController extends Controller
 {
     public function list()
     {
-        $user = Auth::user();
         $categories = category::all();
         foreach($categories as $category){
-            $image = image::where('subject_id',$category->id)->where('type','3')->first();
-            $category['cat_name']=$image->image;
+            $image = Image::where('subject_id',$category->id)->where('type','3')->first();
+            $category['img']=$image;
         }
-        return view('user.home', compact('categories'),compact('categories'));
+
+
+        return view('user.home', compact('categories'));
     }
     public function table()
     {

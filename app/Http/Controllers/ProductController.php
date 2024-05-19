@@ -15,7 +15,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $products = Product::where('category_id', $cat_id)->get();
-        return view('user.products', compact('products', 'categories'));
+        $images = Image::where('subject_id',$cat_id)->where('type','2')->get();
+        return view('user.products', compact('products', 'categories','images'));
     }
     public function product($id)
     {
