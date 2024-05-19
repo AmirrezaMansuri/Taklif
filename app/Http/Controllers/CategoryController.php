@@ -16,11 +16,16 @@ class CategoryController extends Controller
     {
         $user = Auth::user();
         $categories = category::all();
-        return view('user.home', compact('categories'));
+        foreach($categories as $category){
+            $image = image::where('subject_id',$category->id)->where('type','3')->first();
+            $category['cat_name']=$image->image;
+        }
+        return view('user.home', compact('categories'),compact('categories'));
     }
     public function table()
     {
         $categories = category::all();
+
         return view('admin.category.view', compact('categories'));
     }
     public function show_create()

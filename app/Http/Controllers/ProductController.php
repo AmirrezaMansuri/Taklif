@@ -21,7 +21,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $product = Product::where('id', $id)->first();
-        return view('user.product', compact('product', 'categories'));
+        $images = Image::where('subject_id',$id)->where('type','2')->get();
+        return view('user.product', compact('product', 'categories','images'));
     }
     public function table()
     {

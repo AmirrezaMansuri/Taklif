@@ -38,13 +38,12 @@
                     <div class="card">
                         <img class="card-img-top" src="{{ asset($image->image) }}" alt="">
                         <div class="card-body">
-                            <h5 class="card-title">Title</h5>
-                            <p class="card-text">Content</p>
+                            <h5 class="card-title"></h5>
                         </div>
                     </div>
                 </div>
             @endforeach
-                
+
         </div>
 
     </div>
