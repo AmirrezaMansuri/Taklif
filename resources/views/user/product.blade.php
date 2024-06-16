@@ -1,49 +1,48 @@
 @extends('user.layout.master')
 @section('style')
-    <style>
-        .div_image {
-            height: 900px;
-            width: 100px;
-        }
+<style>
+    .div_image {
+        height: 1000px;
+        width: 1000px;
+    }
 
-        .container {
-            text-align: center;
-        }
-    </style>
+    .container {
+        text-align: center;
+    }
+</style>
 @endsection
 @section('body')
-    <div class="container">
-        <div class="image">
+<div class="container">
+    <div class="image">
+        <div id="demo" class="carousel slide" data-ride="carousel">
 
-            <div id="demo" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                @foreach($images as $key=>$image)
+                <li data-target="#demo" data-slide-to="{{$key}}"@if($key==0) class="active" @endif></li>
+                @endforeach
+            </ul>
 
-                <!-- Indicators -->
-                <ul class="carousel-indicators">
+            <!-- The slideshow -->
+            <div class="carousel-inner">
 
-                    @foreach ($images as $image)
-                        <li data-target="#demo" data-slide-to=""></li>
-                    @endforeach
-                </ul>
-
-                <!-- The slideshow -->
-                <div class="carousel-inner">
-                    @foreach ($images as $image)
-                        <div class="carousel-item">
-                            <img src="{{ asset($image->image) }}" alt="">
-                        </div>
-                    @endforeach
+            @foreach($images as $key=>$image)
+                <div @if($key!=1) class="carousel-item  " @else class="carousel-item  active"  @endif>
+                    <img src="{{asset($image->image)}}" alt="Los Angeles">
                 </div>
 
-
-                <!-- Left and right controls -->
-                <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a class="carousel-control-next" href="#demo" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </a>
-
+            @endforeach
+               
             </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
         </div>
 
         <h4>{{ $product->name }}</h4>
@@ -52,4 +51,4 @@
             <p>about Product : {{ $product->description }}</p>
         </h4>
     </div>
-@endsection
+    @endsection

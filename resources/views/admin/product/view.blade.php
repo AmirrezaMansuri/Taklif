@@ -1,4 +1,4 @@
-@extends('admin.layout.master');
+@extends('admin.layout.master')
 @section('style')
 <style>
     .table {
@@ -44,7 +44,6 @@
                         {{$product->cat_name}}
                     </h4>
                 </td>
-                <td><a href="/admin/product/delete/{{ $product->id }}"><button class="btn btn-danger">DELETE</button></a></td>
                 <td><a href="/admin/product/delete/{{ $product->id }}"><button class="btn btn-danger">DELETE</button></a></td>
                 <td><a href="/admin/product/image/{{$product->id}}"><button class="btn btn-light" type="submit">Images</button></a></td>
 
