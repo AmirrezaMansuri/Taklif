@@ -18,6 +18,12 @@
                     </a>
                 </li>
 
+
+                <li class="nav-item px-1 active">
+                    <a href="/cart/" class="nav-link">
+                        <h5>Cart</h5>
+                    </a>
+                </li>
                 <li class="nav-item px-4 dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>

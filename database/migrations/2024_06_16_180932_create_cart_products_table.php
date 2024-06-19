@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('cart_id');
             $table->bigInteger('product_id');
-            $table->integer('price');
-            $table->tinyInteger('off');
+            $table->integer('price')->nullable();
+            $table->tinyInteger('off')->nullable();
             $table->timestamps();
         });
     }

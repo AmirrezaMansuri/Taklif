@@ -70,10 +70,10 @@ Route::middleware('auth')->group(function () {
             Route::post('/image/{id}', [UserController::class, 'create_image']);
         });
     });
-    Route::prefix('cart')->group(function(){
-        Route::get('/',[CartController::class,'show']);
-        Route::get('/delete/{id}',[CartController::class,'delete']);
-        Route::post('/create', [UserController::class, 'create_user']);
+    Route::prefix('cart')->group(function () {
+        Route::get('/', [CartController::class, 'show']);
+        Route::get('/delete/{id}', [CartController::class, 'delete']);
+        Route::get('/create/{id}', [CartController::class, 'create_user']);
     });
 });
 

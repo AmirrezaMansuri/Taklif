@@ -51,10 +51,6 @@
             <h4>
                 <p>about Product : {{ $product->description }}</p>
             </h4>
-
-            <form action="cart/create" method="post">
-                <input style="display: none" type="text" name="" id="" value="{{ $product->id }}">
-                <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block">Add To Cart</button>
-            </form>
+            <a href="/cart/create/{{$product->id}}"><button type="button" name="" id="" class="btn btn-primary btn-lg btn-block">add to cart</button></a>
         </div>
     @endsection
