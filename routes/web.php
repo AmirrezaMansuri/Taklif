@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
@@ -68,6 +69,11 @@ Route::middleware('auth')->group(function () {
             Route::get('/image/{id}', [UserController::class, 'show_image']);
             Route::post('/image/{id}', [UserController::class, 'create_image']);
         });
+    });
+    Route::prefix('cart')->group(function(){
+        Route::get('/',[CartController::class,'show']);
+        Route::get('/delete/{id}',[CartController::class,'delete']);
+        Route::post('/create', [UserController::class, 'create_user']);
     });
 });
 
