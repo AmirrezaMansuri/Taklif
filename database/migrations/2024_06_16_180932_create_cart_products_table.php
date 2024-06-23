@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigInteger('product_id');
             $table->integer('price')->nullable();
             $table->tinyInteger('off')->nullable();
+            $table->integer('num');
             $table->timestamps();
         });
     }

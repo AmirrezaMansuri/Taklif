@@ -8,8 +8,8 @@ use App\Http\Controllers\ProductController;
 use App\Models\user;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Role;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +28,24 @@ Route::middleware('auth')->group(function () {
     Route::get('/products/{cat_id}', [ProductController::class, 'products']);
     Route::get('/product/{id}', [ProductController::class, 'product']);
 
+    //__________________________________________________________________
+    Route::get('role',function(){
+        $owner = Role::create([
+            'name' => 'owner',
+            'display_name' => 'Project Owner', // optional
+            'description' => 'User is the owner of a given project', // optional
+        ]);
+        $admin = Role::create([
+            'name' => 'admin',
+            'display_name' => 'User Administrator', // optional
+            'description' => 'User is allowed to manage and edit other users', // optional
+        ]);
+        $admin = Role::create([
+            'name' => 'user',
+            'display_name' => 'User', // optional
+            'description' => '', // optional
+        ]);
+    });
     //__________________________________________________________________
     Route::prefix('admin')->group(function () {
         Route::get('/', function () {
@@ -74,8 +92,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [CartController::class, 'show']);
         Route::get('/delete/{cart_id}/{prod_id}', [CartController::class, 'delete']);
         Route::get('/payment/{id}',[CartController::class,'payment']);
-        Route::get('/create/{id}', [CartController::class, 'create_user']);
+        Route::get('/create/{id}', [CartController::class, 'create']);
     });
+
 });
 
 

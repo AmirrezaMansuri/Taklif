@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\user;
@@ -27,11 +27,13 @@ class AuthController extends Controller
         if ($errors->fails()) {
             return redirect()->back()->withErrors($errors)->withinput();
         }
+        $user = Role::where('name','user')->first();
         $insert = new User();
         $insert->name = $req->name;
         $insert->email = $req->email;
         $insert->password = bcrypt($req->password);
         $insert->save();
+        $insert->addRole($user);
         return redirect('auth/login');
     }
     public function show_login()

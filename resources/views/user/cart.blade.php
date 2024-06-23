@@ -13,6 +13,7 @@
                     <th>Price</th>
                     <th>off</th>
                     <th>Total price</th>
+                    <th>Num</th>
                     <th>Delet product</th>
                 </tr>
             </thead>
@@ -41,6 +42,11 @@
                         </td>
                         <td>
                             <h6>
+                                {{$product->num}}
+                            </h6>
+                        </td>
+                        <td>
+                            <h6>
                                 <a href="/cart/delete/{{ $product->cart_id }}/{{ $product->product->id }}"><button
                                         type="button" name="" id="" class="btn btn-primary">Delete</button></a>
                             </h6>
@@ -49,6 +55,7 @@
                 @endforeach
             </tbody>
         </table>
+        <h4>Total amount:{{$sum}}$</h4>
         <a href="/cart/payment/{{$cart->id}}">
             <button type="button" name="" id="" class="btn btn-primary btn-lg btn-block">the payment</button>
         </a>
