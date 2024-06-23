@@ -72,7 +72,8 @@ Route::middleware('auth')->group(function () {
     });
     Route::prefix('cart')->group(function () {
         Route::get('/', [CartController::class, 'show']);
-        Route::get('/delete/{id}', [CartController::class, 'delete']);
+        Route::get('/delete/{cart_id}/{prod_id}', [CartController::class, 'delete']);
+        Route::get('/payment/{id}',[CartController::class,'payment']);
         Route::get('/create/{id}', [CartController::class, 'create_user']);
     });
 });
