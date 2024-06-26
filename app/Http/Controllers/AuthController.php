@@ -43,10 +43,11 @@ class AuthController extends Controller
     public function login(Request $req)
     {
         $user = User::where('name', $req->name)->first();
+        if($user){
         if (Hash::check($req->password, $user->password)) {
             Auth::login($user);
             return redirect('/');
-        }
+        }}
         return redirect()->back();
     }
     public function logout(){
